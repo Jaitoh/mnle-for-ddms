@@ -59,7 +59,9 @@ num_repeats = 10
 budgets = torch.tensor([200_000]).repeat_interleave(num_repeats)
 seeds = torch.randint(0, 1000000, size=(budgets.shape[0],))
 
-results = Parallel(n_jobs=num_workers)(
-    delayed(train_mnle)(theta, x, budget.item(), seed)
-    for budget, seed in zip(budgets, seeds)
-)
+# results = Parallel(n_jobs=num_workers)(
+#     delayed(train_mnle)(theta, x, budget.item(), seed)
+#     for budget, seed in zip(budgets, seeds)
+# )
+
+train_mnle(theta, x, 200_000, 100)
